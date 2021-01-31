@@ -99,28 +99,4 @@ class TermTest {
         Assert.assertEquals(Term("xay"), x.insert('a', 1))
         Assert.assertEquals(Term("xya"), x.insert('a', 2))
     }
-
-    @Test
-    fun reverseTest() {
-        Assert.assertEquals(Term(""), Term("").reverse())
-        Assert.assertEquals(Term("a"), Term("a").reverse())
-        Assert.assertEquals(Term("ba"), Term("ab").reverse())
-        Assert.assertEquals(Term("cba"), Term("abc").reverse())
-        Assert.assertEquals(Term("aabb"), Term("bbaa").reverse())
-    }
-
-    @Test
-    fun abcdeTest() {
-        Assert.assertEquals(Term("edcba"), Term("abcde").reverse())
-    }
-
-    @Test
-    fun isPalindromeTest() {
-        Assert.assertTrue(Term("").isPalindrome())
-        Assert.assertTrue(Term("a").isPalindrome())
-        Assert.assertTrue(Term("aa").isPalindrome())
-        Assert.assertTrue(Term("aaa").isPalindrome())
-        Assert.assertTrue(Term("madam").isPalindrome())
-        Assert.assertFalse(Term("ab").isPalindrome())
-    }
 }
