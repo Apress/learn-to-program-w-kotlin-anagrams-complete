@@ -1,7 +1,7 @@
 # Apress Source Code
 
 This repository is the complete project
-from Chapter 11 of
+from Chapter 11, and the starting point of Chapter 12, of
 [*Learn to Program with Kotlin*](https://www.apress.com/9781484268148)
 by Tim Lavers (Apress, 2021).
 
