@@ -50,27 +50,4 @@ data class Term(val text: String) {
         val after = text.substring(position)
         return Term(before + newChar + after)
     }
-
-    fun reverse(): Term {
-        val length = text.length
-        //If the word is empty or just one letter,
-        //it is its own reverse.
-        if (length < 2) {
-            return this
-        }
-        //Get the first and last characters and the
-        //inner word formed by the letters in between.
-        val first = text[0]
-        val last = text[length - 1]
-        val inner = Term(text.substring(1, length - 1))
-        //Use recursion to get the reverse of the inner word.
-        val reverseOfInner = inner.reverse().text
-        //Put the three pieces together to form the result.
-        val newText = last + reverseOfInner + first
-        return Term(newText)
-    }
-
-    fun isPalindrome(): Boolean {
-        return equals(reverse())
-    }
 }
