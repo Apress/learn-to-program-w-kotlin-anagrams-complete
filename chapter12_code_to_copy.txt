@@ -1,0 +1,117 @@
+Project Step 12.1:
+fun reverse() : Term {
+    return Term("")
+}
+
+
+Project Step 12.2:
+@Test
+fun reverseTest() {
+    Assert.assertEquals(Term("ba"), Term("ab").reverse())
+}
+
+After Project Step 12.2:
+@Test
+fun reverseTest() {
+    Assert.assertEquals(Term(""), Term("").reverse())
+    Assert.assertEquals(Term("a"), Term("a").reverse())
+    Assert.assertEquals(Term("ba"), Term("ab").reverse())
+    Assert.assertEquals(Term("cba"), Term("abc").reverse())
+    Assert.assertEquals(Term("aabb"), Term("bbaa").reverse())
+}
+
+Project Step 12.3:
+fun reverse() : Term {
+    var result = ""
+    for (c in text) {
+        result = c + result
+    }
+    return Term(result)
+}
+
+Project Step 12.4:
+fun reverse() : Term {
+    return Term(text.reversed())
+}
+
+Project Step 12.5:
+fun reverse() : Term {
+    val length = text.length
+    //If the word is empty or just one letter, it is its own reverse.
+    if (length < 2) {
+        return this
+    }
+    //Get the first and last characters and the inner word formed
+    //by the letters in between these.
+    val first = text[0]
+    val last = text[length - 1]
+    val inner = Term(text.substring(1, length - 1))
+    //Use recursion to get the reverse of the inner word.
+    val reverseOfInner = inner.reverse().text
+    //Put the three pieces together to form the result.
+    val newText = last + reverseOfInner + first
+    return Term(newText)
+}
+
+Project Step 12.6:
+@Test
+fun abcdeTest() {
+    Assert.assertEquals(Term("edcba"), Term("abcde").reverse())
+}
+
+Project Step 12.7:
+fun isPalindrome(): Boolean {
+    return equals(reverse())
+}
+
+Project Step 12.8:
+@Test
+fun isPalindromeTest() {
+    Assert.assertTrue(Term("").isPalindrome())
+    Assert.assertTrue(Term("a").isPalindrome())
+    Assert.assertTrue(Term("aa").isPalindrome())
+    Assert.assertTrue(Term("aaa").isPalindrome())
+    Assert.assertTrue(Term("madam").isPalindrome())
+    Assert.assertFalse(Term("ab").isPalindrome())
+}
+
+Project Step 12.9:
+fun main(){
+    //Create a dictionary from "english.txt" in resources/books
+    val path = Paths.get("src/main/resources/books/english.txt")
+    val dictionary = Dictionary(path)
+    //For each string in the dictionary...
+    
+        //...create a Term from the string
+        
+        //...test to see if the word is a palindrome...
+        
+            //...if it is, print it.
+}
+
+
+
+Final version of main method, 
+built in Project Steps 12.9 - 12.13:
+package pfb.anagrams
+
+import java.nio.file.Paths
+
+/**
+ * Finds and prints out English palindromes.
+ */
+fun main() {
+    //Create a dictionary from "english.txt" in resources/books
+    val path = Paths.get("src/main/resources/books/english.txt")
+    val dictionary = Dictionary(path)
+    //For each string in the dictionary...
+    for (str in dictionary.words) {
+        //...create a Term from the string
+        val term = Term(str)
+        //...test to see if the word is a palindrome...
+        if (term.isPalindrome()) {
+            //...if it is, print it.
+            println(term)
+        }
+    }
+}
