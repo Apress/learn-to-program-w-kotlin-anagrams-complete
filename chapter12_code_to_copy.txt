@@ -107,11 +107,11 @@ fun main() {
     //For each string in the dictionary...
     for (str in dictionary.words) {
         //...create a Term from the string
-        val term = Term(str)
+        val word = Term(str)
         //...test to see if the word is a palindrome...
-        if (term.isPalindrome()) {
+        if (word.isPalindrome()) {
             //...if it is, print it.
-            println(term)
+            println(word)
         }
     }
 }
