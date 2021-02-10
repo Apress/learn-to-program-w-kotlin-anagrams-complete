@@ -93,7 +93,7 @@ fun main(){
 
 Final version of main method, 
 built in Project Steps 12.9 - 12.13:
-package pfb.anagrams
+package lpk.anagrams
 
 import java.nio.file.Paths
 
